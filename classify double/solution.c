@@ -118,15 +118,3 @@ void classify (double number) {
         printf("Error.\n");
     }
 } 
-
-
-
-//int main(){
-//    uint64_t r = 0x7FF000000000000F;
-//
-//    double a = *((double *)(&r));
-//    double b;// = 4.940656e-324;
-//    printf("%e\n", a);
-//    classify(b);
-//}
-
