@@ -3,6 +3,11 @@
 count_det:
 .fnstart
 
+push {r2}
+push {r3}
+push {r4}
+push {r5}
+push {r6}
 
 ldr r2, [r0]
 ldr r3, [r0, $16]
@@ -46,6 +51,15 @@ mul r6, r4, r6
 sub r5, r5, r6
 
 mov r0, r5
+
+pop {r6}
+pop {r5}
+pop {r4}
+pop {r3}
+pop {r2}
+
+
+
 bx lr
 .fnend
 
