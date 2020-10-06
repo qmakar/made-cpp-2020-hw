@@ -1,12 +1,35 @@
+//
+//  main.cpp
+//  hw_3
+//
+//  Created by Makar Q on 06.10.2020.
+//
+
 #include <iostream>
 #include <functional>
 
 typedef std::function<int (int)> Op;
 
-
-
 Op compose (size_t n, Op ops[]) {
-    /// Your code goes here.
+    if (n == 0) {
+        return [] (int x) -> int {
+            return x;
+        };
+    }
+
+    if (n == 1) {
+        return [ops] (int x) -> int {
+            Op f = ops[0];
+            return f(x);
+        };
+    }
+
+    return [n, ops] (int x) -> int {
+        Op f1 = compose(n - 1, ops + 1);
+        x = f1(x);
+        Op f2 = ops[0];
+        return f2(x);
+    };
 }
 
 
@@ -64,4 +87,6 @@ int main () {
             return 0;
         }
     }
+    
+    std::cout << "OK" << std::endl;
 }
